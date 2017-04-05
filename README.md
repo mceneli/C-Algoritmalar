@@ -1,2 +1,2 @@
-# C-Algoritmalar
-C dilinde kodlanmış algoritmalar.
+# Algoritmalar
+C
