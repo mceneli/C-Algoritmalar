@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <math.h>
+//Compiler version g++ 4.9
+
+float a4,a3,a2,a1,a0,xb,xl,xr,xi,x1,tmp,epsilon,max;
+int sec;
+
+//fonksiyon
+ float Fun(float x){
+ return (a4*x*x*x*x+a3*x*x*x+a2*x*x+a1*x+a0);
+	}
+
+//fonksiyonun turevi
+ float fun1(float x){
+ 	return (4*a4*x*x*x+3*a3*x*x+2*a2*x+a1);
+ 	}
+//hangi metodu sececegi
+ int main(void){
+	printf("Newton Rapshon icin 1i, Regula Falsi icin 2yi tuslayiniz.\n");
+	scanf("%d",&sec);
+	
+	if(sec==1){
+  //Newton Rapshon
+  printf("4. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a4);
+ 	printf("3. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a3);
+ 	printf("2. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a2);
+ 	printf("1. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a1);
+ 	printf("tamsayiyi giriniz.\n");
+ 	scanf("%f",&a0);
+ 	printf("baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xb);
+ 	printf("epsilon giriniz.\n");
+ 	scanf("%f",&epsilon);
+ 	printf("max deneme sayisini giriniz.\n");
+ 	scanf("%f",&max);
+ 	
+ 	
+ 		while(epsilon<fabs(Fun(xi)) && max>0){    //fabs = mutlak deger
+ 			xi=xb-(Fun(xb)/fun1(xb));
+ 			
+ 				printf("x'in yeni tahmini:%f  Bu x'e karsilik gelen deger:%f\n",xi,Fun(xi));
+ 				if(fabs(Fun(xi))>epsilon){
+ 					xb=xi;
+ 					max=max-1;
+ 					}else{
+ 						max=0;
+ 						}
+ 				}
+ 	printf("Fonksiyonun koku:%f\n", xi);
+ 	 return 0;
+ 	 
+ 	}else if(sec==2){		
+  //Regula Falsi
+ 	printf("4. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a4);
+ 	printf("3. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a3);
+ 	printf("2. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a2);
+ 	printf("1. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a1);
+ 	printf("tamsayiyi giriniz.\n");
+ 	scanf("%f",&a0);
+ 	printf("sol baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xl);
+ 	printf("sag baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xr);
+ 	printf("epsilon giriniz.\n");
+ 	scanf("%f",&epsilon);
+ 	printf("max deneme sayisini giriniz.\n");
+ 	scanf("%f",&max);
+ 	
+ 	if(Fun(xl)*Fun(xr)>0){
+ 	printf("bu aralikta cozum yoktur.\n");
+ 	}else{
+ 		while(epsilon<fabs(Fun(x1)) && max>0){
+ 			x1=(xl*Fun(xr)-xr*Fun(xl))/(Fun(xr)-Fun(xl));
+ 				printf("xl:%f xr:%f xm:%f ym:%f\n",xl,xr,x1,Fun(x1),epsilon);
+ 				if(Fun(x1)*Fun(xl)<0){
+ 					xl=x1;
+ 					}else{
+ 						xr=x1;
+ 						}
+ 					max=max-1;
+ 				}
+ 		 }
+		printf("Fonksiyonun koku:%f\n", x1);
+		return 0;
+  }
+  }
