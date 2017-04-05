@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main()
+{		
+	char arry[50];
+	char chara[10];
+	int sayac=0,j=0,i,tut=0;
+
+	printf("Bir seyler yazin : \n");
+	scanf("%[^\n]s",arry);
+	printf("Aranan kelimeyi giriniz : \n");
+	scanf("%s",chara);
+
+	int uzunluk=strlen(chara);
+
+	printf("kelimelerin gectigi indisler\n");
+
+	for(i=0;arry[i];i++){
+		if (arry[i]==chara[j]){//kelimenin ilk harfi eşleşiyor mu			
+for(j=0;chara[j];j++){// aranan kelimenin uzunluğu kadar döner
+if(chara[j]==arry[i]){//sonraki harfler eşleşiyor mu					
+tut++;
+						}
+					i++;
+		}
+			if(tut==uzunluk){
+				sayac++;
+				printf("%d , ",i-uzunluk);
+				}
+			tut=0;
+			i=i-uzunluk+1;
+			j=0;
+	}
+}
+	printf("\n%d kez gecmis.",sayac);
+	return 0;
+}
