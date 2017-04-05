@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <time.h>
+
+int i, n=10, tut=0, max=0, son=0, array[15];
+int
+int main()
+{
+srand(time(NULL));
+    for(i=0;i<n;i++){          //diziyi 0-9 arasında rastgele sayılarla doldurur.
+        array[i]=rand()%10;
+    }
+
+    for(i=0;i<(n-1);i++){
+        if(array[i+1]>array[i]){    //kendinden sonraki terim büyükse sayar.
+           tut++;
+         }  
+           else{                   //kendinden sonraki küçükse sayımı sıfırlar.
+           tut=0;
+        }
+        if(tut>max){                   //yeni saydığı öncekinden uzun ise yeni saydığını maksimum atar ve yerini kaydeder.
+            max=tut;
+            son=i;
+           }
+        }
+
+
+
+for(i=0;i<n;i++){                  //indisleri yazar.
+        printf("%2d ",i);
+
+    }
+printf("\n");
+    for(i=0;i<n;i++){                    //indisteki değeri yazar.
+        printf("%2d ",array[i]);
+
+    }
+    printf("\n");
+    printf("max tekrar sayisi %d\n", max+1);
+    printf("tekrarin basi %d\n", son-max+1);
+    printf("tekrarin sonu %d\n", son+1);
+    return 0;
+}
+    
