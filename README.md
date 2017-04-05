@@ -1,2 +1,0 @@
-# Algoritmalar
-C
