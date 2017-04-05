@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <math.h>
+//Compiler version g++ 4.9
+
+float a4,a3,a2,a1,a0,xl,xr,epsilon,xm,max;
+
+ float Fun(float x){
+ return (a4*x*x*x*x+a3*x*x*x+a2*x*x+a1*x+a0);
+	}
+	
+
+ int main(void)
+ {
+ 	printf("4. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a4);
+ 	printf("3. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a3);
+ 	printf("2. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a2);
+ 	printf("1. derecenin katsayisini giriniz.\n");
+ 	scanf("%f",&a1);
+ 	printf("tamsayiyi giriniz.\n");
+ 	scanf("%f",&a0);
+ 	printf("sol baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xl);
+ 	printf("sag baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xr);
+ 	printf("epsilon giriniz.\n");
+ 	scanf("%f",&epsilon);
+ 	printf("max deneme sayisini giriniz.\n");
+ 	scanf("%f",&max);
+ 	
+ 	xm=(xl+xr)/2;
+ 	printf("%f\n",max);
+ 	
+ 	if(Fun(xl)*Fun(xr)>0){
+ 	printf("bu aralikta cozum yoktur.\n");
+ 	}else{
+ 		while(epsilon<fabs(Fun(xm)) && max>0){
+ 			if(Fun(xl)*Fun(xm)<0){
+ 				xr=xm;
+ 				}else if(Fun(xr)*Fun(xm)<0){
+ 						xl=xm;
+ 						}
+ 				xm=(xl+xr)/2;
+ 				max=max-1;
+ 				printf("xl:%f xr:%f xm:%f ym:%f\n",xl,xr,xm,Fun(xm));
+ 				}
+ 		 }
+ 	 
+ 	 printf("Fonksiyonun koku:%f\n", xm);
+ 	 return 0;
+  }
