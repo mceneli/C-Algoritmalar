@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+
+	int i,j,k,n,e,f,say=0,tut=0;
+	float c,sum=0.0,ctrl=0.0,tmp;
+	printf("Katsayilar matrisinin boyutunu giriniz:\n\n");
+	scanf("%d",&n);
+	
+	float A[n][n+1],x[n];
+	float B[n][n+1];
+	int y[n];
+
+	for(i=1; i<=n; i++){
+		for(j=1; j<=n; j++){
+			printf("A[%d][%d]:\n",i,j);
+			scanf("%f",&A[i][j]);
+			B[i][j]=A[i][j];
+		}
+	}
+	printf("\n Esitlik sonuclari vektorunu giriniz:\n");
+	
+	for(i=1; i<=n; i++){
+		printf("B[%d]:\n",i);
+		scanf("%f",&A[i][n+1]);
+		B[i][n+1]=A[i][n+1];
+		y[i]=0;
+	}
+	
+	printf("\n\n");
+
+	if(A[1][1]==0){
+		i=2;
+		while(A[i][1]==0 && i<=n){
+			i++;
+			}
+		for(j=1;j<=(n+1);j++){
+			tmp=A[i][j];
+			A[i][j]=A[1][j];
+			A[1][j]=tmp;
+		}
+		}
+	
+	for(j=1; j<=n; j++){
+		for(i=1; i<=n; i++){
+			if(i>j){
+				if(A[j][j]!=0){
+				c=A[i][j]/A[j][j];
+				
+				for(k=1; k<=n+1; k++){
+				A[i][k]=A[i][k]-c*A[j][k];
+				}
+				}else{break;}
+			}
+		}
+	
+	
+	
+		for(e=1; e<=n; e++){
+			for(f=1; f<=(n+1); f++){
+				if(fabs(A[e][f])<10.0){
+					if(A[e][f]==fabs(A[e][f])){
+					printf("  %.2f ",A[e][f]);
+					}else{
+					printf(" %.2f ",A[e][f]);
+					}
+				}else{
+					if(A[e][f]==fabs(A[e][f])){
+					printf(" %.2f ",A[e][f]);
+					}else{
+					printf("%.2f ",A[e][f]);
+					}
+				}
+			printf("|");  // silince bozuluyor.
+			}
+			printf("\n");
+		}
+		printf("\n\n");
+	}
+
+	for(i=n+1; i>=1 ;i--){
+		for(j=1; j<=n+1; j++){
+			if(A[i][j]==0){
+				say=say+1;
+			}
+		}
+		if(say==(n+1)){
+			tut=tut+1;
+			y[i]=1;
+		}
+		say=0;
+	}	
+
+	if(tut>0){
+	printf("%d keyfi degiskene bagli sonsuz cozum vardir.\n",tut);
+		for(j=1;j<=n;j++){
+			if(y[j]!=0){
+		x[j]=1;
+		printf("x%d=1 ",j);
+			}
+		}
+	printf("alinirsa\n");
+	
+	for(i=n; i>=1; i--){
+		if(y[i]!=1){
+		sum=0;
+		for(j=i+1; j<=n; j++){
+			sum=sum+A[i][j]*x[j];
+		}
+		x[i]=(A[i][n+1]-sum)/A[i][i];
+		}
+	}
+	
+	printf("\nCozum kumesi: \n");
+	
+	for(i=1; i<=n; i++){
+		printf("\nx%d=%.2f\t",i,x[i]);
+	}
+	}else{
+	
+	x[n]=A[n][n+1]/A[n][n];
+
+	for(i=n-1; i>=1; i--){
+		sum=0;
+		for(j=i+1; j<=n; j++){
+			sum=sum+A[i][j]*x[j];
+		}
+		x[i]=(A[i][n+1]-sum)/A[i][i];
+	}
+
+	printf("\nCozum kumesi: \n");
+	
+	for(i=1; i<=n; i++){
+		printf("\nx%d=%.2f\t",i,x[i]);
+	}
+	}
+	printf("\n\n");
+	
+	for(i=1; i<=n; i++){
+		for(j=1; j<=n; j++){
+			ctrl=ctrl+(B[i][j]*x[j]);
+		}
+		printf("%d . esitlik icin sonuc:%f , B[%d]:%f\n",i,ctrl,i,B[i][n+1]);
+		ctrl=0;
+	}
+return 0;
+}
