@@ -3,7 +3,7 @@
 
 int main(){
 
-	int i,j,k,n,e,f,say=0,tut=0;
+	int i,j,k,n,e,f,say=0,tut=0,yok=0;
 	float c,sum=0.0,ctrl=0.0,tmp;
 	printf("Katsayilar matrisinin boyutunu giriniz:\n\n");
 	scanf("%d",&n);
@@ -72,7 +72,7 @@ int main(){
 					printf("%.2f ",A[e][f]);
 					}
 				}
-			printf("|");  // silince bozuluyor.
+			//
 			}
 			printf("\n");
 		}
@@ -89,9 +89,16 @@ int main(){
 			tut=tut+1;
 			y[i]=1;
 		}
+		if(A[i][n+1]!=0 && say==n){
+			yok=1;
+			}
 		say=0;
 	}	
-
+	
+	if(yok==1){
+		printf("cozum yoktur.");
+		}else{
+	
 	if(tut>0){
 	printf("%d keyfi degiskene bagli sonsuz cozum vardir.\n",tut);
 		for(j=1;j<=n;j++){
@@ -141,8 +148,10 @@ int main(){
 		for(j=1; j<=n; j++){
 			ctrl=ctrl+(B[i][j]*x[j]);
 		}
-		printf("%d . esitlik icin sonuc:%f , B[%d]:%f\n",i,ctrl,i,B[i][n+1]);
+		printf("%d . esitlik icin sonuc:%.2f , B[%d]:%.2f\n",i,ctrl,i,B[i][n+1]);
 		ctrl=0;
-	}
+	}}
 return 0;
 }
+    
+    
