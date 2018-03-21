@@ -18,9 +18,6 @@ int sec;
  int main(void){
 	printf("Newton Rapshon icin 1i, Regula Falsi icin 2yi tuslayiniz.\n");
 	scanf("%d",&sec);
-	
-	if(sec==1){
-  //Newton Rapshon
   printf("4. derecenin katsayisini giriniz.\n");
  	scanf("%f",&a4);
  	printf("3. derecenin katsayisini giriniz.\n");
@@ -31,15 +28,16 @@ int sec;
  	scanf("%f",&a1);
  	printf("tamsayiyi giriniz.\n");
  	scanf("%f",&a0);
- 	printf("baslangic tahminini giriniz.\n");
- 	scanf("%f",&xb);
- 	printf("epsilon giriniz.\n");
+  printf("epsilon giriniz.\n");
  	scanf("%f",&epsilon);
  	printf("max deneme sayisini giriniz.\n");
  	scanf("%f",&max);
+
+if(sec==1){   //Newton Rapshon
+  printf("baslangic tahminini giriniz.\n");
+ 	scanf("%f",&xb);
  	
- 	
- 		while(epsilon<fabs(Fun(xi)) && max>0){    //fabs = mutlak deger
+ 	while(epsilon<fabs(Fun(xi)) && max>0){    //fabs = mutlak deger
  			xi=xb-(Fun(xb)/fun1(xb));
  			
  				printf("x'in yeni tahmini:%f  Bu x'e karsilik gelen deger:%f\n",xi,Fun(xi));
@@ -55,25 +53,11 @@ int sec;
  	 
  	}else if(sec==2){		
   //Regula Falsi
- 	printf("4. derecenin katsayisini giriniz.\n");
- 	scanf("%f",&a4);
- 	printf("3. derecenin katsayisini giriniz.\n");
- 	scanf("%f",&a3);
- 	printf("2. derecenin katsayisini giriniz.\n");
- 	scanf("%f",&a2);
- 	printf("1. derecenin katsayisini giriniz.\n");
- 	scanf("%f",&a1);
- 	printf("tamsayiyi giriniz.\n");
- 	scanf("%f",&a0);
  	printf("sol baslangic tahminini giriniz.\n");
  	scanf("%f",&xl);
  	printf("sag baslangic tahminini giriniz.\n");
  	scanf("%f",&xr);
- 	printf("epsilon giriniz.\n");
- 	scanf("%f",&epsilon);
- 	printf("max deneme sayisini giriniz.\n");
- 	scanf("%f",&max);
- 	
+
  	if(Fun(xl)*Fun(xr)>0){
  	printf("bu aralikta cozum yoktur.\n");
  	}else{
