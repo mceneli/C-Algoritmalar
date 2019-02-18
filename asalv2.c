@@ -30,7 +30,7 @@ int main(){
 	for(i=3;i<=n;i=i+2){
 		value = (array[i/8] & (1 << (i%8))) != 0;
 		if(value==0){
-			//printf(",%d",i);
+			//printf(",%d",i); //ekrana yazdırmak için fakat yazdırmka yavaşlatıyor.
 			j++;
 		}
 	}
