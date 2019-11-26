@@ -17,7 +17,7 @@ int main(){
 	array[2/8] &= ~(1 << (2%8));
 	int nn=sqrt(n);
 	
-	for(i=3;i<nn;i++){
+	for(i=3;i<nn+1;i++){
 		value = (array[i/8] & (1 << (i%8))) != 0;
 		if(value==0){
 			for(j=i*i;j<=n;j=j+2*i){
@@ -25,8 +25,8 @@ int main(){
 			}
 		}
 	}
-	j=0;
-	printf("2");
+	j=1;
+	//printf("2");
 	for(i=3;i<=n;i=i+2){
 		value = (array[i/8] & (1 << (i%8))) != 0;
 		if(value==0){
