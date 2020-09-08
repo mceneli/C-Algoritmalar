@@ -2,21 +2,10 @@
 #include<stdlib.h>
 
 struct Node {
-   unsigned int data:5;
+   unsigned int data:4;
    struct Node* next;
    struct Node* prev;
 };
-
-void push(struct Node** head_ref, int new_data){
-  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-  new_node->data = new_data;
-  new_node->next = (*head_ref);
-  new_node->prev = NULL;
-  if ((*head_ref) != NULL){
-    (*head_ref)->prev = new_node;
-  }
-  (*head_ref) = new_node;  
-}
 
 void append(struct Node** head_ref, int new_data){
   struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
